@@ -9,7 +9,6 @@
         "product": "@innoactive/semantic-release-ai-notes: a semantic-release plugin that rewrites generated release notes with an LLM. Readers: engineers who configure semantic-release in their repositories."
       }
     ],
-    "@semantic-release/npm",
     "@semantic-release/github"
   ]
 }

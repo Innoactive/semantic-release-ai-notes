@@ -29,7 +29,15 @@ It never fails a release. Without a credential, when the standard notes are empt
 
 ## Usage
 
-Replace the standard notes generator in your config. Its options (`preset`, `presetConfig`, `writerOpts`, …) work as before.
+The plugin isn't on the npm registry. Install it from this repository's release tags:
+
+```bash
+npm install --save-dev "github:Innoactive/semantic-release-ai-notes#semver:^1"
+```
+
+With `cycjimmy/semantic-release-action`, put the same `github:Innoactive/semantic-release-ai-notes#semver:^1` in `extra_plugins`. `#semver:^1` picks the newest `v1.x.y` tag. Pin `#v1.2.3`, or a commit SHA, to stay on one version.
+
+Then replace the standard notes generator in your config. Its options (`preset`, `presetConfig`, `writerOpts`, …) work as before.
 
 ```json
 {
@@ -107,11 +115,9 @@ Any provider credential works in place of `OPENAI_API_KEY`. Options are read fro
 
 ## Releasing this package
 
-Merges to `main` are released by [`release.yml`](.github/workflows/release.yml), using this checkout of the plugin for its own release notes. npm publishing uses trusted publishing (OIDC), which can only be configured for a package that already exists, so the first release is bootstrapped once:
+Merges to `main` are released by [`release.yml`](.github/workflows/release.yml): semantic-release tags `vX.Y.Z` and creates a GitHub release, using this checkout of the plugin for its own release notes. There is no npm publish; consumers install from the tags. `package.json` is `private` so it can't be published by accident, and its version stays a placeholder.
 
-1. Add a short-lived granular npm token with publish rights on the `@innoactive` scope as the `NPM_TOKEN` secret, and one provider credential (`OPENAI_API_KEY`, `ANTHROPIC_API_KEY` or `CLAUDE_CODE_OAUTH_TOKEN`).
-2. Merge to `main`. The first release publishes `1.0.0`.
-3. On npmjs.com, add `Innoactive/semantic-release-ai-notes` / `release.yml` as the package's trusted publisher, then delete the `NPM_TOKEN` secret and the token.
+A tag is what consumers run inside their release jobs, so protect `v*` tags against deletion and force-updates with a tag ruleset. Add one provider credential (`OPENAI_API_KEY`, `ANTHROPIC_API_KEY` or `CLAUDE_CODE_OAUTH_TOKEN`) as a repository secret for the plugin's own notes.
 
 ## License
 

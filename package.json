@@ -1,6 +1,7 @@
 {
   "name": "@innoactive/semantic-release-ai-notes",
   "version": "0.0.0-development",
+  "private": true,
   "description": "semantic-release plugin that rewrites the generated release notes into a reader-friendly summary with OpenAI or Claude, keeping the original list",
   "keywords": [
     "semantic-release",
@@ -37,9 +38,6 @@
   "devDependencies": {
     "@semantic-release/release-notes-generator": "^14.1.1",
     "conventional-changelog-conventionalcommits": "^9.0.0"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.132.1"
