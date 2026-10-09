@@ -1,0 +1,50 @@
+{
+  "name": "@innoactive/semantic-release-ai-notes",
+  "version": "0.0.0-development",
+  "private": true,
+  "description": "semantic-release plugin that rewrites the generated release notes into a reader-friendly summary with OpenAI or Claude, keeping the original list",
+  "keywords": [
+    "semantic-release",
+    "semantic-release-plugin",
+    "release-notes",
+    "changelog",
+    "openai",
+    "anthropic",
+    "claude"
+  ],
+  "license": "MIT",
+  "author": "Innoactive GmbH",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Innoactive/semantic-release-ai-notes.git"
+  },
+  "type": "module",
+  "exports": "./index.js",
+  "files": [
+    "index.js",
+    "lib"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "preview": "node scripts/preview.js"
+  },
+  "peerDependencies": {
+    "@semantic-release/release-notes-generator": ">=12.0.0",
+    "@anthropic-ai/claude-code": ">=2.0.0"
+  },
+  "devDependencies": {
+    "@semantic-release/release-notes-generator": "^14.1.1",
+    "conventional-changelog-conventionalcommits": "^9.0.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.132.1"
+  },
+  "peerDependenciesMeta": {
+    "@anthropic-ai/claude-code": {
+      "optional": true
+    }
+  }
+}

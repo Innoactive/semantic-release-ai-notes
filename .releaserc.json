@@ -1,0 +1,14 @@
+{
+  "branches": ["main"],
+  "plugins": [
+    ["@semantic-release/commit-analyzer", { "preset": "conventionalcommits" }],
+    [
+      "./index.js",
+      {
+        "preset": "conventionalcommits",
+        "product": "@innoactive/semantic-release-ai-notes: a semantic-release plugin that rewrites generated release notes with an LLM. Readers: engineers who configure semantic-release in their repositories."
+      }
+    ],
+    "@semantic-release/github"
+  ]
+}
